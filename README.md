@@ -83,7 +83,7 @@ Finally, to evaluate the **total_portfolio**, we compared it to the **emergency_
 * Else the total portfolio is less than the emergency fund value, so display a message showing how many dollars away the member is from reaching the goal. (Subtract the total portfolio value from the emergency fund value.)
 ```
 
-Luckily, with the client's current holdings, s/he **has enough money in the fund**! The overall portfolio held a total amount of $130095.65, which is greater than the emergency fund of $36000.
+Luckily, with the client's current holdings, s/he **has enough money in the fund**! The overall portfolio held a total amount of $101,192.14, which is greater than the emergency fund of $36000.
 
 ---
 
@@ -100,14 +100,14 @@ First, we made an API call via the Alpaca SDK to get the 3 years of historical c
 For both simulations, the following were used to run the 30- and 10-year simulationas and to calculate cumulative returns. The 30-year weights and year are used in the following example:
 
 ```python
-MC_4060_weight = MCSimulation(
-    portfolio_data = prices_df,
-    weights = [.60, 0.40],
+MC_60_40_split_30_year = MCSimulation(
+    portfolio_data = carlo_three_year_data,
+    weights = [.60, .40],
     num_simulation = 500,
-    num_trading_days = 252*30
+    num_trading_days = 252 * 30
 )
 
-MC_4060_weight.calc_cumulative_return()
+MC_60_40_split_30_year.portfolio_data
 ```
 
 Afterwards, we then plotted them to get a visualization of the forecasts:
@@ -124,8 +124,9 @@ Afterwards, we then plotted them to get a visualization of the forecasts:
 
 The summary statistics for each simulation was also produced to calculate the range of possible outcomes using the lower and upper 95% confidence intervals multiplied by the **total_stocks_bonds** variable. Their results were compared to determine if the client can retire early if s/he shifted the weights of the portfolio to emphasize more on stocks.
 
-- **For the 40/60, 30-year simulation**: there is a 95% chance that an initial investment of $70640.1 in the portfolio with a 40% weight in AGG and 60% in SPY over the next 30 years will end within the range of $172851 and $1294715.
+- **For the 40/60, 30-year simulation**: there is a 95% chance that an initial investment of $70,623.8 in the portfolio with a 40% weight in AGG and 60% in SPY over the next 30 years will end within the range of $186,967 and $3,264,917
 
-- **For the 20/80, 10-year simulation**: there is a 95% chance that an initial investment of $70640.1 in the portfolio with a 20% weight in AGG and 80% in SPY over the next 10 years will end within the range of $77356 and $169127.
+- **For the 20/80, 10-year simulation**: there is a 95% chance that an initial investment of $70,623.8 in the portfolio with a 20% weight in AGG and 80% in SPY over the next 10 years will end within the range of $52,172 and $507,773
+
 
 **In conclusion**, the financial tools have indicated that the client cannot retire early even if s/he changed the strategy by adjusting the weights to focus more on stocks. This is a good financial tool to test out your retirement strategies.
