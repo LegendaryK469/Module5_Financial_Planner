@@ -76,11 +76,13 @@ Then, based on the client's current holdings of AGG and SPY, their total value w
 Finally, to evaluate the **total_portfolio**, we compared it to the **emergency_fund_value**, which is set to be three times the "month_income" of $12000 (i.e., $36000). This was done by a serires of if statements to determine if the client's total portfolio is large enough to fund the emergency portfolio:
 
 ```python
-* If the total portfolio value is greater than the emergency fund value, display a message congratulating the member for having enough money in this fund.
 
-* Else if the total portfolio value is equal to the emergency fund value, display a message congratulating the member on reaching this important financial goal.
-
-* Else the total portfolio is less than the emergency fund value, so display a message showing how many dollars away the member is from reaching the goal. (Subtract the total portfolio value from the emergency fund value.)
+if total_portfolio > emergency_fund_value:
+    print("Congratulations! You have more than enough money in this fund!")
+elif total_portfolio == emergency_fund_value:
+    print("Congratulation on reaching this important financial milestone!")
+else:
+    print(f"You are ${(emergency_fund_value - total_portfolio):.2f} away from reaching your goal.")
 ```
 
 Luckily, with the client's current holdings, s/he **has enough money in the fund**! The overall portfolio held a total amount of $101,192.14, which is greater than the emergency fund of $36000.
